@@ -32,9 +32,9 @@ jobs:
       - name: Terraform Plan
         working-directory: ./terraform/envs/dev
         env:
-          TF_VAR_eic_url: ${{ secrets.SERVER_URL }}
-          TF_VAR_eic_username: ${{ secrets.USERNAME }}
-          TF_VAR_eic_password: ${{ secrets.PASSWORD }}
+          TF_VAR_server_url: ${{ secrets.SERVER_URL }}
+          TF_VAR_username: ${{ secrets.USERNAME }}
+          TF_VAR_password: ${{ secrets.PASSWORD }}
         run: terraform plan -var-file=dev.tfvars 
 
 
@@ -59,7 +59,7 @@ jobs:
       - name: Terraform Apply
         working-directory: ./terraform/envs/dev
         env:
-          TF_VAR_eic_url: ${{ secrets.SERVER_URL }}
-          TF_VAR_eic_username: ${{ secrets.USERNAME }}
-          TF_VAR_eic_password: ${{ secrets.PASSWORD }}
+          TF_VAR_server_url: ${{ secrets.SERVER_URL }}
+          TF_VAR_username: ${{ secrets.USERNAME }}
+          TF_VAR_password: ${{ secrets.PASSWORD }}
         run: terraform apply -auto-approve -var-file=dev.tfvars 
