@@ -22,32 +22,25 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: terraform/envs/dev
+        working-directory: ./terraform/envs/dev
         run: terraform init
 
       - name: Terraform Validate
-        working-directory: terraform/envs/dev
+        working-directory: ./terraform/envs/dev
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: terraform/envs/dev
+        working-directory: ./terraform/envs/dev
         env:
           TF_VAR_eic_url: ${{ secrets.SERVER_URL }}
           TF_VAR_eic_username: ${{ secrets.USERNAME }}
           TF_VAR_eic_password: ${{ secrets.PASSWORD }}
-        run: terraform plan -var-file=dev.tfvars -input=false
+        run: terraform plan -var-file=dev.tfvars 
 
-      - name: Upload Plan Artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: tf-plan-dev
-          path: |
-            terraform/envs/dev/.terraform
-            terraform/envs/dev/terraform.tfstate*
+
 
   apply:
-    name: Terraform Apply (dev)
+    
     needs: plan
     runs-on: ubuntu-latest
     environment:
@@ -60,13 +53,13 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: terraform/envs/dev
+        working-directory: ./terraform/envs/dev
         run: terraform init
 
       - name: Terraform Apply
-        working-directory: terraform/envs/dev
+        working-directory: ./terraform/envs/dev
         env:
           TF_VAR_eic_url: ${{ secrets.SERVER_URL }}
           TF_VAR_eic_username: ${{ secrets.USERNAME }}
           TF_VAR_eic_password: ${{ secrets.PASSWORD }}
-        run: terraform apply -auto-approve -var-file=dev.tfvars -input=false
+        run: terraform apply -auto-approve -var-file=dev.tfvars 
