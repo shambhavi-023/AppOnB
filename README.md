@@ -1,51 +1,63 @@
-This repository provides Infrastructure‑as‑Code (IaC) templates, modules, and examples for onboarding and managing Saviynt Identity Cloud configurations using the Saviynt Terraform Provider.
+# 🚀 Saviynt Terraform Automation
 
-Terraform enables Saviynt configuration to be:
+---
 
-Repeatable
-Auditable
-Version‑controlled
-Automated with CI/CD
-Consistent across environments
+## 📘 Overview
+This repository provides Infrastructure‑as‑Code (IaC) modules and templates for onboarding and managing **Saviynt Identity Cloud** configurations using the **Saviynt Terraform Provider**.
 
+Terraform enables configurations to be:
 
-Why Terraform for Saviynt?
+- **Repeatable**
+- **Auditable**
+- **CI/CD‑Driven**
+- **Version Controlled**
+- **Consistent Across Environments**
 
-Automated and traceable configuration management.
-The Saviynt Terraform Provider allows you to manage configurations such as:
+---
 
-Security Systems
-Endpoints
-Connections
-Entitlements
-Roles
-Jobs
+## 🔥 Why Terraform for Saviynt?
 
-Key Advantages
-1. DevOps‑Native Integration
-Works seamlessly with existing Terraform workflows and CI/CD pipelines.
-2. Safe Change Management
-Terraform plan + state enables drift detection and prevents unauthorized manual edits.
-3. Seamless Environment Promotion
-Promote the same code across dev → test → prod without UI rework.
-4. Version Control & Auditability
-Git enables:
-Full history
-Pull-request approvals
-Rollbacks
-Compliance-ready audit trails
+Modern identity governance needs to be automated and traceable.  
+The Saviynt Terraform Provider allows management of:
 
+- Security Systems  
+- Endpoints  
+- Connections  
+- Entitlements  
+- Roles  
+- Jobs  
 
-Prerequisites
+### ✅ Key Advantages
 
-Tools Needed
+#### **1. DevOps‑Native Integration**
+- Works with existing Terraform workflows  
 
-Terraform v1.3+
-Saviynt Terraform Provider 
-Git
+#### **2. Safe Change Management**
+- Detects drift  
+- Identifies unauthorized changes  
 
-Saviynt Requirements
+#### **3. Consistent Environment Promotion**
+- One codebase promoted across:
+  - `dev`
+  - `test`
+  - `prod`  
 
-API Access enabled
-Client ID & Secret
-Appropriate Saviynt roles/permissions
+#### **4. Version Control + Auditability**
+- Git history  
+- PR approvals  
+- Rollback capability  
+
+---
+
+## 📦 Prerequisites
+
+### **Required Tools**
+- Terraform **v1.3+**
+- Saviynt Terraform Provider
+- Git
+
+### **Saviynt Requirements**
+- API Access  
+- Client ID & Secret  
+- Access roles in Saviynt  
+
