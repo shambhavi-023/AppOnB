@@ -27,6 +27,31 @@ resource "saviynt_endpoint_resource" "endpoint" {
 
 }
 
+
+
+resource "saviynt_entitlement_type_resource" "example" {
+  # Required attributes
+  entitlement_name = "example_ent_type"
+  endpoint_name    = var.endpoint_name
+  depends_on = [ saviynt_endpoint_resource.endpoint ]
+
+
+
+}
+
+
+resource "saviynt_entitlement_resource" "test_entitlement" {
+  # Required attributes
+  endpoint          = var.endpoint_name
+  entitlement_type  = "example_ent_type"
+  entitlement_value = "sample-ent"
+
+  depends_on = [ saviynt_entitlement_type_resource.example ]
+
+
+}
+
+
 output "security_system"{
     value = saviynt_security_system_resource.example.systemname
 }
