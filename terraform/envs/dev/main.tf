@@ -23,6 +23,8 @@ resource "saviynt_endpoint_resource" "endpoint" {
   security_system                               = var.security_system_name
   description                                   = "Endpoint"
   owner_type                                    = "User"
+  user_account_correlation_rule = "MATCH_ON_USERNAME"
+  account_name_rule                             = "acct-$${user.email}"
   depends_on = [ saviynt_security_system_resource.example ]
 
 }
@@ -31,7 +33,8 @@ resource "saviynt_endpoint_resource" "endpoint" {
 
 resource "saviynt_entitlement_type_resource" "example" {
   # Required attributes
-  entitlement_name = "example_ent_type"
+  entitlement_name = "Access"
+  entitlement_description = "test ent type"
   endpoint_name    = var.endpoint_name
   depends_on = [ saviynt_endpoint_resource.endpoint ]
 
@@ -40,17 +43,50 @@ resource "saviynt_entitlement_type_resource" "example" {
 }
 
 
-resource "saviynt_entitlement_resource" "test_entitlement" {
+resource "saviynt_entitlement_resource" "entitlement1" {
   # Required attributes
   endpoint          = var.endpoint_name
-  entitlement_type  = "example_ent_type"
-  entitlement_value = "sample-ent"
+  entitlement_type  = "Access"
+  entitlement_value = "IT Administrators"
+  risk            = 3
+  status          = 1
+  soxcritical     = 3
+  syscritical     = 1
 
   depends_on = [ saviynt_entitlement_type_resource.example ]
 
 
 }
 
+resource "saviynt_entitlement_resource" "entitlement2" {
+  # Required attributes
+  endpoint          = var.endpoint_name
+  entitlement_type  = "Access"
+  entitlement_value = "HelpDesk"
+  risk            = 3
+  status          = 1
+  soxcritical     = 3
+  syscritical     = 1
+
+  depends_on = [ saviynt_entitlement_type_resource.example ]
+
+
+}
+
+resource "saviynt_entitlement_resource" "entitlement3" {
+  # Required attributes
+  endpoint          = var.endpoint_name
+  entitlement_type  = "Access"
+  entitlement_value = "ReadOnly"
+  risk            = 3
+  status          = 1
+  soxcritical     = 3
+  syscritical     = 1
+
+  depends_on = [ saviynt_entitlement_type_resource.example ]
+
+
+}
 
 output "security_system"{
     value = saviynt_security_system_resource.example.systemname

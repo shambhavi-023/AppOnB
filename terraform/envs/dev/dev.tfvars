@@ -1,2 +1,2 @@
-security_system_name = "7FebTest"
-endpoint_name = "7Feb_endpoint"
+security_system_name = "Disconn_ss"
+endpoint_name = "Disconn_endpoint"
