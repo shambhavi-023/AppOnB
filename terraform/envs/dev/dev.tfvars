@@ -1,2 +1,2 @@
-security_system_name = "Disconn_security"
-endpoint_name = "Disconn_endp"
+security_system_name = "20FebDisconnSS"
+endpoint_name = "Disconn_endpoint1"
